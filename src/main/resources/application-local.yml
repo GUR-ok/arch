@@ -1,0 +1,17 @@
+server:
+  servlet:
+    context-path: /api/v1
+  port: 8081
+
+management:
+  server:
+    port: 8000
+  endpoints:
+    web:
+      base-path: /
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    ru.gur.arch: INFO

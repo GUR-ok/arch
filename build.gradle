@@ -18,6 +18,10 @@ repositories {
     mavenCentral()
 }
 
+bootJar {
+    archiveFileName = "app.jar"
+}
+
 dependencies {
     implementation(
             'org.springdoc:springdoc-openapi-ui:1.6.4',

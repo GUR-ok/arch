@@ -1,4 +1,4 @@
-package ru.gur.arch.web.request;
+package ru.gur.arch.web.simplecontroller.request;
 
 import lombok.Builder;
 import lombok.Data;

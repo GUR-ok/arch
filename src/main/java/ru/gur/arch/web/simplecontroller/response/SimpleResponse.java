@@ -1,4 +1,4 @@
-package ru.gur.arch.web.response;
+package ru.gur.arch.web.simplecontroller.response;
 
 import lombok.Builder;
 import lombok.Data;

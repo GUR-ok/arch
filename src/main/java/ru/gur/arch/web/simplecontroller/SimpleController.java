@@ -1,13 +1,12 @@
-package ru.gur.arch.web;
+package ru.gur.arch.web.simplecontroller;
 
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import ru.gur.arch.web.request.SimpleRequest;
-import ru.gur.arch.web.response.SimpleResponse;
+import ru.gur.arch.web.simplecontroller.request.SimpleRequest;
+import ru.gur.arch.web.simplecontroller.response.SimpleResponse;
 
 import javax.validation.Valid;
 

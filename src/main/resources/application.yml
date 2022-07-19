@@ -35,6 +35,6 @@ spring:
 
 logging:
   level:
-    root: ERROR
-    org.springframework: ERROR
+    root: INFO
+    org.springframework: INFO
     ru.gur.arch: INFO

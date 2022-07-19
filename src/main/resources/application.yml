@@ -16,6 +16,23 @@ spring:
   main:
     banner-mode: off
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostreSQL9Dialect
+    properties:
+      hibernate:
+        default_schema: public
+  datasource:
+    platform: postgres
+    url: ${DB_URL:jdbc:postgresql://localhost:5432}/${DB_NAME:postgres}?currentSchema=${DB_CHEMA:public}
+    username: ${DB_USERNAME:user}
+    password: ${DB_PASSWORD:pass}
+    driverClassName: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:/db/changelog/db_master_changelog.xml
+    enabled: true
+
 logging:
   level:
     root: ERROR

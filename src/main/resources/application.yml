@@ -19,15 +19,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    database-platform: org.hibernate.dialect.PostreSQL9Dialect
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties:
       hibernate:
         default_schema: public
   datasource:
     platform: postgres
-    url: ${DB_URL:jdbc:postgresql://localhost:5432}/${DB_NAME:postgres}?currentSchema=${DB_CHEMA:public}
-    username: ${DB_USERNAME:user}
-    password: ${DB_PASSWORD:pass}
+    url: jdbc:postgresql://postgresql-service:5432/postgres?currentSchema=public
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
     driverClassName: org.postgresql.Driver
   liquibase:
     change-log: classpath:/db/changelog/db_master_changelog.xml

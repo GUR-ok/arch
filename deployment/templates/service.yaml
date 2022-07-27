@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: otus-hw02-service
+  name: {{ .Values.service.app.name }}
 spec:
   selector:
     app: otus-hw02-app
   ports:
-    - protocol: TCP
-      port: 9000
-      targetPort: 8000
-  type: NodePort
+    - protocol: {{ .Values.service.app.protocol }}
+      port: {{ .Values.service.app.port }}
+      targetPort: {{ .Values.deployment.app.port }}
+  type: {{ .Values.service.app.type }}
 
 ---
 apiVersion: v1

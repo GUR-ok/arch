@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: otus-hw02-deployment
+  name: {{ .Values.deployment.app.name }}
 spec:
-  replicas: 3
+  replicas: {{ .Values.deployment.app.replicas }}
   selector:
     matchLabels:
       app: otus-hw02-app
@@ -14,20 +14,20 @@ spec:
     spec:
       containers:
         - name: otus-hw02
-          image: gurok/arch_homework_2
+          image: {{ .Values.deployment.app.image }}
           ports:
             - name: web
-              containerPort: 8000
+              containerPort: {{ .Values.deployment.app.port }}
           livenessProbe:
             httpGet:
-              port: 8000
+              port: {{ .Values.deployment.app.port }}
               path: /health
             initialDelaySeconds: 10
             periodSeconds: 5
             timeoutSeconds: 2
           readinessProbe:
             httpGet:
-              port: 8000
+              port: {{ .Values.deployment.app.port }}
               path: /health
             initialDelaySeconds: 10
             periodSeconds: 5
@@ -35,27 +35,27 @@ spec:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: DATABASE_URL
             - name: DATABASE_NAME
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: DATABASE_NAME
             - name: DATABASE_SCHEMA
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: DATABASE_SCHEMA
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: SPRING_DATASOURCE_USERNAME
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: SPRING_DATASOURCE_PASSWORD
 ---
 apiVersion: apps/v1
@@ -83,17 +83,17 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: DATABASE_NAME
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: SPRING_DATASOURCE_USERNAME
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: crud-secret
+                  name: {{ .Values.secret.name }}
                   key: SPRING_DATASOURCE_PASSWORD
           volumeMounts:
             - name: postgredb

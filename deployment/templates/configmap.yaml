@@ -4,6 +4,4 @@ metadata:
   name: {{ .Values.config.name }}
 data:
   SERVER_PORT: "{{ .Values.config.port }}"
-  SPRING_JPA_DATABASE: "{{ .Values.config.database }}"
   SPRING_JPA_HIBERNATE_DDL_AUTO: "{{ .Values.config.ddl }}"
-  SPRING_DATASOURCE_DRIVER_CLASS_NAME: "{{ .Values.config.driver }}"

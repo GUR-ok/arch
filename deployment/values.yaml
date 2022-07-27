@@ -1,38 +1,36 @@
 config:
-  name: crud-configmap
+  name: otus-hw02-configmap
   port: 8000
-  database: postgresql
-  ddl: create
-  driver: org.postgresql.Driver
+  ddl: validate
 secret:
-  name: crud-secret
+  name: otus-hw02-secret
 deployment:
   app:
-    name: crud-deployment
+    name: otus-hw02-deployment
     type: NodePort
-    image: gurok/arch_homework_2:1.1
+    image: gurok/arch_homework_2
     port: 8000
-    replicas: 2
+    replicas: 3
   db:
-    name: postresql-deployment
+    name: otus-hw02-postresql-deployment
     type: NodePort
     image: postgres:latest
     port: 5432
     replicas: 1
 service:
   app:
-    name: crud-service
+    name: otus-hw02-service
     type: NodePort
     protocol: TCP
-    port: 8000
+    port: 9000
   db:
     name: postgresql-service
+    host: "postgresql-service"
     type: NodePort
-    dbname: postgres
-    host: "postrgesql-service"
     port: 5432
     sport: "5432"
-    dbschema: "public"
+    dbname: postgres
+    dbschema: public
 ingress:
-  name: crud-ingress
+  name: otus-hw02-ingress
   host: arch.homework

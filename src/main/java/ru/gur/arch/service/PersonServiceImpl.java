@@ -1,6 +1,7 @@
 package ru.gur.arch.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import ru.gur.arch.entity.Person;
 import ru.gur.arch.exception.PersonNotFoundException;
@@ -20,7 +21,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public UUID createPerson(final ImmutableCreatePersonRequest request) {
         final Person person = new Person();
-        person.setName(request.getName());
+        person.setFirstName(request.getFirstName());
+        person.setLastName(request.getLastName());
+        person.setEmail(request.getEmail());
+        person.setPhone(request.getPhone());
 
         return personRepository.save(person).getId();
     }
@@ -30,7 +34,12 @@ public class PersonServiceImpl implements PersonService {
         final Person person = personRepository.findById(uuid).orElseThrow(PersonNotFoundException::new);
 
         return PersonData.builder()
-                .name(person.getName())
+                .firstName(person.getFirstName())
+                .lastName(person.getLastName())
+                .email(person.getEmail())
+                .phone(person.getPhone())
+                .createdDate(person.getCreated())
+                .firstName(person.getFirstName())
                 .build();
     }
 
@@ -42,7 +51,18 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void updatePerson(final ImmutableUpdatePersonRequest request, final UUID uuid) {
         final Person person = personRepository.findById(uuid).orElseThrow(PersonNotFoundException::new);
-        person.setName(request.getName());
+        if (StringUtils.isNotBlank(request.getFirstName())) {
+            person.setFirstName(request.getFirstName());
+        }
+        if (StringUtils.isNotBlank(request.getLastName())) {
+            person.setLastName(request.getLastName());
+        }
+        if (StringUtils.isNotBlank(request.getEmail())) {
+            person.setEmail(request.getEmail());
+        }
+        if (StringUtils.isNotBlank(request.getPhone())) {
+            person.setPhone(request.getPhone());
+        }
 
         personRepository.save(person);
     }

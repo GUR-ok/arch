@@ -17,9 +17,13 @@ public class PersonDataToFindUserResponseConverter
         .build();
   }
 
-  private PersonDTO convertUser(PersonData personData) {
+  private PersonDTO convertUser(PersonData source) {
     return PersonDTO.builder()
-        .name(personData.getName())
+            .firstName(source.getFirstName())
+            .lastName(source.getLastName())
+            .email(source.getEmail())
+            .phone(source.getPhone())
+            .created(source.getCreatedDate())
         .build();
   }
 }

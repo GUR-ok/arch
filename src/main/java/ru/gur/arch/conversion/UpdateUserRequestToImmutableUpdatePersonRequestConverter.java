@@ -12,7 +12,10 @@ public class UpdateUserRequestToImmutableUpdatePersonRequestConverter
   @Override
   public ImmutableUpdatePersonRequest convert(final UpdateUserRequest source) {
     return ImmutableUpdatePersonRequest.builder()
-            .name(source.getName())
+            .firstName(source.getFirstName())
+            .lastName(source.getLastName())
+            .email(source.getEmail())
+            .phone(source.getPhone())
             .build();
   }
 }

@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, UUID> {
 
-    Optional<Person> findByName(String name);
+    Optional<Person> findByFirstName(String name);
 }

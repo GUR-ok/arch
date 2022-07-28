@@ -14,7 +14,20 @@
             <column name="id" type="uuid" remarks="Идентификатор пользователя">
                 <constraints primaryKey="true" primaryKeyName="pk_user"/>
             </column>
-            <column name="user_name" type="varchar(255)" remarks="Имя пользователя">
+            <column name="first_name" type="varchar(255)" remarks="Имя пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)" remarks="Фамилия пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)" remarks="Адрес электронной почты">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(255)" remarks="Телефон">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="DATETIME(3)" remarks="Дата создания пользователя"
+                    defaultValueDate="NOW(3)" autoIncrement="false">
                 <constraints nullable="false"/>
             </column>
         </createTable>

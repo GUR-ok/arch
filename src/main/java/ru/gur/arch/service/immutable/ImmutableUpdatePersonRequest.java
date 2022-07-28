@@ -7,5 +7,11 @@ import lombok.Value;
 @Builder
 public class ImmutableUpdatePersonRequest {
 
-    String name;
+    String firstName;
+
+    String lastName;
+
+    String email;
+
+    String phone;
 }

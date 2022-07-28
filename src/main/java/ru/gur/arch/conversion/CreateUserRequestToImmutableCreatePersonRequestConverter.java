@@ -12,7 +12,10 @@ public class CreateUserRequestToImmutableCreatePersonRequestConverter
   @Override
   public ImmutableCreatePersonRequest convert(final CreateUserRequest source) {
     return ImmutableCreatePersonRequest.builder()
-            .name(source.getName())
+            .firstName(source.getFirstName())
+            .lastName(source.getLastName())
+            .email(source.getEmail())
+            .phone(source.getPhone())
             .build();
   }
 }

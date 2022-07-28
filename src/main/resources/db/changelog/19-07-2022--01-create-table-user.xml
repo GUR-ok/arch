@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create-table-user" author="Yuriy Gorelov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="users" remarks="Заявка на открытие первого счета">
+            <column name="id" type="uuid" remarks="Идентификатор пользователя">
+                <constraints primaryKey="true" primaryKeyName="pk_user"/>
+            </column>
+            <column name="first_name" type="varchar(255)" remarks="Имя пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)" remarks="Фамилия пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)" remarks="Адрес электронной почты">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(255)" remarks="Телефон">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="DATETIME(3)" remarks="Дата создания пользователя"
+                    defaultValueDate="NOW(3)" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

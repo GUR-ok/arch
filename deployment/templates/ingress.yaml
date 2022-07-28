@@ -1,26 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: otus-hw01-ingress
+  name: {{ .Values.ingress.name }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   ingressClassName: nginx
   rules:
-    - host: arch.homework
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /otusapp/gur-ok/?(.*)($|/)
             pathType: Prefix
             backend:
               service:
-                name: otus-hw01-service
+                name: {{ .Values.service.app.name }}
                 port:
-                  number: 9000
+                  number: {{ .Values.service.app.port }}
           - path: /(.*)
             pathType: Prefix
             backend:
               service:
-                name: otus-hw01-service
+                name: {{ .Values.service.app.name }}
                 port:
-                  number: 9000
+                  number: {{ .Values.service.app.port }}

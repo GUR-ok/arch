@@ -27,7 +27,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="created" type="DATETIME(3)" remarks="Дата создания пользователя"
-                    defaultValueDate="NOW(3)" autoIncrement="false">
+                    defaultValueDate="NOW()" autoIncrement="false">
                 <constraints nullable="false"/>
             </column>
         </createTable>

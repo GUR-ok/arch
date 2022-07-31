@@ -34,7 +34,7 @@ dependencies {
             'org.postgresql:postgresql',
             'org.liquibase:liquibase-core:3.10.2'
     )
-    runtimeOnly 'com.h2database:h2'
+    runtimeOnly('com.h2database:h2', 'io.micrometer:micrometer-registry-prometheus')
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -16,6 +16,8 @@ management:
       prometheus:
         enabled: true
     distribution:
+      slo:
+        http.server.requests: 10ms, 50ms, 100ms, 200ms, 300ms, 500ms
       percentiles-histogram:
         "[http.server.requests]": true
 spring:
